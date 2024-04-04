@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Search Results</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ddd;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="roomResults">
+    <!-- JavaScript will populate this div with room results -->
+</div>
+
+<script>
+    // Sample data (replace this with your actual data)
+    var availableRoomTypes = [
+        { label: "Room 1", description: "Description 1", numberOfPersons: 2 },
+        { label: "Room 2", description: "Description 2", numberOfPersons: 3 },
+        { label: "Room 3", description: "Description 3", numberOfPersons: 4 }
+    ];
+
+    // Function to render available room types
+    function renderRoomTypes() {
+        var roomResultsDiv = document.getElementById("roomResults");
+        var ul = document.createElement("ul");
+
+        // Check if there are available room types
+        if (availableRoomTypes.length > 0) {
+            availableRoomTypes.forEach(function (roomType) {
+                var li = document.createElement("li");
+                li.innerHTML = "<strong>" + roomType.label + "</strong><br>" +
+                    "Description: " + roomType.description + "<br>" +
+                    "Number of Persons: " + roomType.numberOfPersons;
+                ul.appendChild(li);
+            });
+        } else {
+            // Display a message if no room types are available
+            var p = document.createElement("p");
+            p.textContent = "No available room types for the selected date range.";
+            roomResultsDiv.appendChild(p);
+        }
+
+        roomResultsDiv.appendChild(ul);
+    }
+
+    // Call the function to render room types
+    renderRoomTypes();
+</script>
+
+</body>
+</html>
